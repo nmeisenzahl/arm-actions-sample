@@ -16,14 +16,15 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
 #    - uses: azure/CLI@v1
+#      name: 'ARM deployment'
 #      with:
 #        azcliversion: latest
 #        inlineScript: |
 #          az deployment group create --resource-group ${{ env.AZURE_RESOURCE_GROUP }} --template-file ${{ env.TEMPLATE_FILE }} --parameters ${{ env.PARAMETERS_FILE }}
 
     - uses: whiteducksoftware/azure-arm-action-js@v2
+      name: 'ARM deployment'
       with:
         resourceGroupName: ${{ env.AZURE_RESOURCE_GROUP }}
         templateLocation: ${{ env.TEMPLATE_FILE }}
         parameters: ${{ env.PARAMETERS_FILE }}
-
